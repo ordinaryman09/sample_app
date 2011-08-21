@@ -144,6 +144,15 @@ end
     it "should return nil on email/password mismatch" do
       User.authenticate(@attr[:email], "wronpass").should be_nil 
     end
+    
+    it "should return nil for an email address with no user" do
+      User.authenticate("bar@foo.com", @attr[:password]).should be_nil
+    end
+    
+    it "should return the user on email/password match" do
+      User.authenticate(@attr[:email], @attr[:password]).should == @user
+    end
+    
   end
   
 end
