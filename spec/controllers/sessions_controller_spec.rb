@@ -31,8 +31,8 @@ end
       it "should have the right title" do 
         post :create, :session => @attr
         response.should have_selector('title', :content => "Sign in")
-      
-      it "" do
+      end
+      it "should have an error message" do
         post :create, :session => @attr
         flash.now[:error].should =~ /invalid/i
       end
@@ -40,5 +40,4 @@ end
     end
     
   end
-
 end
